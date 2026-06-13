@@ -1,0 +1,115 @@
+{
+  "name": "ud-vscode",
+  "displayName": "UnDercontrol",
+  "description": "Sync and edit UnDercontrol tasks as plain markdown files",
+  "version": "0.1.0",
+  "publisher": "oatnil",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/.ud-sync-meta.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ud.sync",
+        "title": "Sync",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.syncFull",
+        "title": "Sync Full (pull all)",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.syncWatch",
+        "title": "Start Watch Mode",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.syncStop",
+        "title": "Stop Watch Mode",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.list",
+        "title": "Browse Tasks",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.newTask",
+        "title": "New Task",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.newNote",
+        "title": "New Note",
+        "category": "UnDercontrol"
+      },
+      {
+        "command": "ud.explore",
+        "title": "Open Sync Folder",
+        "category": "UnDercontrol"
+      }
+    ],
+    "configuration": {
+      "title": "UnDercontrol",
+      "properties": {
+        "ud.udBin": {
+          "type": "string",
+          "default": "ud",
+          "description": "Path to the ud CLI binary"
+        },
+        "ud.syncDir": {
+          "type": "string",
+          "default": "",
+          "description": "Local sync directory path (required)"
+        },
+        "ud.autoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-apply on save for files in the sync directory"
+        },
+        "ud.watchOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Start watch mode when VS Code opens"
+        },
+        "ud.watchInterval": {
+          "type": "string",
+          "default": "30s",
+          "description": "Poll interval for watch mode"
+        },
+        "ud.defaultStatus": {
+          "type": "string",
+          "default": "todo",
+          "enum": ["todo", "in-progress", "pending", "done"],
+          "description": "Default status for new tasks"
+        },
+        "ud.defaultTags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Default tags for new tasks"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
