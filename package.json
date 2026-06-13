@@ -68,8 +68,8 @@
         },
         "ud.syncDir": {
           "type": "string",
-          "default": "",
-          "description": "Local sync directory path (required)"
+          "default": "~/ud-sync",
+          "description": "Local sync directory path"
         },
         "ud.autoSync": {
           "type": "boolean",

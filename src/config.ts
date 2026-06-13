@@ -4,7 +4,7 @@ import * as os from "os";
 
 export function getConfig() {
   const config = vscode.workspace.getConfiguration("ud");
-  const rawSyncDir = config.get<string>("syncDir", "");
+  const rawSyncDir = config.get<string>("syncDir", "~/ud-sync");
   const syncDir = rawSyncDir
     ? rawSyncDir.replace(/^~/, os.homedir())
     : "";
